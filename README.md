@@ -1,2 +1,2 @@
 # SNODASR
- Functions for using SNODAS data.
+ R functions for manipulating SNODAS data. This package converts raw SNODAS data into useful formats. The meat of this package is a function for fast and memory-efficient spatiotemporal subsetting of SNODAS data. SNODAS data is provided as ungeoreferenced, flat binary files representing daily snapshots of snowpack for North America. This format is very inconvenient for users who want a timeseries of values for a geographically restricted region. You can use these functions to create georeferenced multiband rasters in common formats readable by GIS software.  
