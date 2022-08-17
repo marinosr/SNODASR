@@ -8,17 +8,17 @@
 #' @return If write_file=FALSE, returns a RasterLayer object, otherwise only used for its side effect of writing a raster file to storage.
 #' @examples read.SNODAS('us_ssmv01025SlL01T0024TTNATS2010022005DP001.dat', read_path='./SNODAStest/')
 #' @export
-read.SNODAS <- function(filename,
+read.SNODAS.unmasked <- function(filename,
                         read_path = './SNODAS/',
                         write_file = TRUE,
                         write_path = './SNODAS/',
                         write_extension='.img'){
   file_opened <- file(paste0(read_path, filename), open='rb')
-  rawdat <- readBin(file_opened, n=3351*6935, what='integer', size=2, endian='big')
+  rawdat <- readBin(file_opened, n=4096*8192, what='integer', size=2, endian='big')
   close(file_opened)
   rawdat[rawdat==-9999]  <- NA
-  rawmatrix <- matrix(data=rawdat, nrow=3351, ncol=6935, byrow=TRUE)
-  image <- raster::raster(rawmatrix, xmn=-124.733749999995013, xmx=-66.942083333330658, ymn=24.949583333332331, ymx=52.874583333331216, crs="+proj=longlat +datum=WGS84")
+  rawmatrix <- matrix(data=rawdat, nrow=4096, ncol=8192, byrow=TRUE)
+  image <- raster::raster(rawmatrix, xmn=-130.512499999995, xmx=-62.2499999999977, ymn=24.0999999999990, ymx=58.2333333333310, crs="+proj=longlat +datum=WGS84")
   if(write_file==TRUE){
     if(!(dir.exists(write_path))){
       dir.create(write_path)
