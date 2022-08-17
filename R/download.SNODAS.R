@@ -59,7 +59,7 @@ download.SNODAS <- function(dates,
   } else { #if unmasked rasters are wanted
 
     URLpaths <- sapply(dates, function(x){
-      x <- lubrdiate::ymd(x)
+      x <- lubridate::ymd(x)
       URLpath <- paste0('ftp://sidads.colorado.edu/DATASETS/NOAA/G02158/unmasked/',
                         lubridate::year(x),
                         '/',

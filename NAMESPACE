@@ -2,4 +2,5 @@
 
 export(download.SNODAS)
 export(extract.SNODAS.subset)
-export(read.SNODAS)
+export(read.SNODAS.masked)
+export(read.SNODAS.unmasked)
